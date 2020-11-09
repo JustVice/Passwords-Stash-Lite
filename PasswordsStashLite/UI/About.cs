@@ -17,7 +17,7 @@ namespace PasswordsStashLite.UI
         {
             this.CenterToScreen();
             this.MaximizeBox = false;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             pictureBox1.Image = Properties.Resources.vice_logo;
         }
 
@@ -31,17 +31,17 @@ namespace PasswordsStashLite.UI
 
         private void label_pslite_web_page_Click(object sender, EventArgs e)
         {
-            Run.OPEN_LINK_ON_BROWSER("https://justvice.github.io/h/technology/CSharp/passwords-stash-lite/");
+            Run.OPEN_LINK_ON_BROWSER("https://justvice.github.io/technology/CSharp/passwords-stash-lite/");
         }
 
         private void label_pslite_github_Click(object sender, EventArgs e)
         {
-            Run.OPEN_LINK_ON_BROWSER("https://github.com/JustVice/PasswordsStashLite");
+            Run.OPEN_LINK_ON_BROWSER("https://github.com/JustVice/Passwords-Stash-Lite");
         }
 
         private void label_vice_links_Click(object sender, EventArgs e)
         {
-            Run.OPEN_LINK_ON_BROWSER("https://justvice.github.io/h/links/");
+            Run.OPEN_LINK_ON_BROWSER("https://justvice.github.io/links/");
         }
     }
 }

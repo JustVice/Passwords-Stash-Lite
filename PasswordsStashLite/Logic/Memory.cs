@@ -15,7 +15,7 @@ namespace PasswordsStashLite.Logic
 
         //Titles
         public static string program_name = "Passwords Stash Lite";
-        public static string version = "2.0.2";
+        public static string version = "2.0.3";
         public static string program_title_bar = program_name + " " + version;
         
 
