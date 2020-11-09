@@ -25,7 +25,7 @@ namespace PasswordsStashLite.Object
             this.database_password_id_index = database_id;
         }
 
-        //Normal GET methods.
+        // Normal GET methods.
         #region GETS
         public string getService()
         {
@@ -49,7 +49,7 @@ namespace PasswordsStashLite.Object
         }
         #endregion
 
-        //Normal SET methods.
+        // Normal SET methods.
         #region SETS
         public void setService(string service)
         {
@@ -73,7 +73,7 @@ namespace PasswordsStashLite.Object
         }
         #endregion
 
-        //Will convert values into Base64 and then return them.
+        // Will convert local values into Base64 and then return them.
         #region GETS IN BASE64
         public string getServiceBase64()
         {
@@ -97,8 +97,8 @@ namespace PasswordsStashLite.Object
         }
         #endregion
 
-        //Will convert values intro AES, then into Base64, and
-        //then return the value.
+        // Will convert local values into AES, then into Base64, and
+        // then return the value.
         #region GETS IN BASE64 AND AES
         public string getServiceEncryptedBase64()
         {

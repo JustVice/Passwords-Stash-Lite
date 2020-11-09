@@ -184,37 +184,39 @@ namespace PasswordsStashLite.Logic
             string query = "";
             if (Memory.is_master_password_activated)
             {
-                query = "INSERT INTO PASSWORD " +
-                                "(service" +
-                                ", email" +
-                                ", user" +
-                                ", password" +
-                                ", notes" +
-                                ", program_object_id)" +
-                                "VALUES(" +
-                                "'" + password.getServiceEncryptedBase64() + "'" +
-                                ",'" + password.getEmailEncryptedBase64() + "'" +
-                                ",'" + password.getUserEncryptedBase64() + "'" +
-                                ",'" + password.getPassword_contentEncryptedBase64() + "'" +
-                                ",'" + password.getNotesEncryptedBase64() + "'" +
-                                ", '" + password.passwordsStashLiteObject_id + "');";
+                query = 
+                "INSERT INTO PASSWORD " +
+                "(service" +
+                ", email" +
+                ", user" +
+                ", password" +
+                ", notes" +
+                ", program_object_id)" +
+                "VALUES(" +
+                "'" + password.getServiceEncryptedBase64() + "'" +
+                ",'" + password.getEmailEncryptedBase64() + "'" +
+                ",'" + password.getUserEncryptedBase64() + "'" +
+                ",'" + password.getPassword_contentEncryptedBase64() + "'" +
+                ",'" + password.getNotesEncryptedBase64() + "'" +
+                ", '" + password.passwordsStashLiteObject_id + "');";
             }
             else
             {
-                query = "INSERT INTO PASSWORD " +
-                                "(service" +
-                                ", email" +
-                                ", user" +
-                                ", password" +
-                                ", notes" +
-                                ", program_object_id)" +
-                                "VALUES(" +
-                                "'" + password.getServiceBase64() + "'" +
-                                ",'" + password.getEmailBase64() + "'" +
-                                ",'" + password.getUserBase64() + "'" +
-                                ",'" + password.getPassword_contentBase64() + "'" +
-                                ",'" + password.getNotesBase64() + "'" +
-                                ", '" + password.passwordsStashLiteObject_id + "');";
+                query = 
+                "INSERT INTO PASSWORD " +
+                "(service" +
+                ", email" +
+                ", user" +
+                ", password" +
+                ", notes" +
+                ", program_object_id)" +
+                "VALUES(" +
+                "'" + password.getServiceBase64() + "'" +
+                ",'" + password.getEmailBase64() + "'" +
+                ",'" + password.getUserBase64() + "'" +
+                ",'" + password.getPassword_contentBase64() + "'" +
+                ",'" + password.getNotesBase64() + "'" +
+                ", '" + password.passwordsStashLiteObject_id + "');";
             }
             string query_console = "Password  " + password.getService() + " added to database. OK.";
             Memory.sqlite.Query(query, query_console);

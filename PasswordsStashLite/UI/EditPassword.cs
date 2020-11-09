@@ -85,12 +85,9 @@ namespace PasswordsStashLite.UI
 
         private void EDIT_PASSWORD_METHOD_TREE()
         {
-            bool neccesary_fields_filled = are_neccesary_fields_filled();
-            if (neccesary_fields_filled)
+            if (are_neccesary_fields_filled())
             {
                 Password password_edited = build_edited_password();
-                //Console.WriteLine("Original database ID: " + this.password_to_edit_classGlobalVariable.getDatabaseID());
-                //Console.WriteLine("Edited database ID: " + password_edited.getDatabaseID());
                 save_changes_on_memory(password_edited);
                 save_changes_on_database(password_edited);
                 ui_changes_after_save_changes();
@@ -136,14 +133,29 @@ namespace PasswordsStashLite.UI
         private void save_changes_on_database(Password password_edited)
         {
             int password_id = password_edited.passwordsStashLiteObject_id;
-            string query = "UPDATE PASSWORD SET " +
+            string query = "";
+            if (Memory.is_master_password_activated)
+            {
+                query = "UPDATE PASSWORD SET " +
                 "service = '" + password_edited.getServiceEncryptedBase64() + "'" +
                 ", email = '" + password_edited.getEmailEncryptedBase64() + "'" +
                 ", user = '" + password_edited.getUserEncryptedBase64() + "'" +
                 ", password = '" + password_edited.getPassword_contentEncryptedBase64() + "'" +
                 ", notes = '" + password_edited.getNotesEncryptedBase64() + "'" +
                 " WHERE " +
-                "program_object_id = '"+ password_id + "'";
+                "program_object_id = '" + password_id + "'";
+            }
+            else
+            {
+                query = "UPDATE PASSWORD SET " +
+                "service = '" + password_edited.getServiceBase64() + "'" +
+                ", email = '" + password_edited.getEmailBase64() + "'" +
+                ", user = '" + password_edited.getUserBase64() + "'" +
+                ", password = '" + password_edited.getPassword_contentBase64() + "'" +
+                ", notes = '" + password_edited.getNotesBase64() + "'" +
+                " WHERE " +
+                "program_object_id = '" + password_id + "'";
+            }
             string console_query_message = "Password edited. OK.";
             Memory.sqlite.Query(query,console_query_message);
         }
