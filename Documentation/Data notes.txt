@@ -1,0 +1,6 @@
+INIFile content:
+	Program opened for the first time (true,false)
+	
+SQLite content:
+	Passwords.
+	Master Password:
