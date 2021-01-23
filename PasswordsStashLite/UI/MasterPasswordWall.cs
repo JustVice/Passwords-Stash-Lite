@@ -68,11 +68,13 @@ namespace PasswordsStashLite.UI
             {
                 if (IS_PASSWORD_CORRECT(password))
                 {
+                    Run.RegisterLog(2, 0, "User has entered a correct Master Password and entered the software.");
                     PASSWORD_IS_CORRECT();
                 }
                 else
                 {
                     PASSWORD_IS_INCORRECT();
+                    Run.RegisterLog(2, 14, "User has entered a wrong Master Password");
                 }
             }
         }
@@ -85,13 +87,15 @@ namespace PasswordsStashLite.UI
             //opens Home.
             if (this.checkBox_start_at_see_passwords.Checked)
             {
+                Run.RegisterLog(2, 3, "User entered See Passwords window from home window.");
                 this.Hide();
                 var next_form = new SeePasswords();
                 next_form.Closed += (s, args) => this.Close();
                 next_form.Show();
             }
-            else
+            else // opens see passwords form.
             {
+                Run.RegisterLog(2, 3, "User entered See Passwords window from home Master Password welcome form.");
                 this.Hide();
                 var next_form = new Home();
                 next_form.Closed += (s, args) => this.Close();
@@ -149,6 +153,7 @@ namespace PasswordsStashLite.UI
         {
             if (!string.IsNullOrWhiteSpace(Memory.master_password.password_hint))
             {
+                Run.RegisterLog(2, 15, "User has asked for the Master Password hint.");
                 Run.MESSAGEBOX("Passwords hint:\r\n" +
                     Memory.master_password.password_hint, "Password hint", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

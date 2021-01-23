@@ -25,9 +25,10 @@ namespace PasswordsStashLite.UI
         private void button_set_master_password_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Memory.master_password_form = new MasterPassword(0,0);
+            Memory.master_password_form = new MasterPassword(0, 0);
             Memory.master_password_form.Closed += (s, args) => this.Close();
             Memory.master_password_form.Show();
+            Run.RegisterLog(0, 7, "Master Password Set opened from Welcome window.");
         }
 
         private void button_set_later_Click(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace PasswordsStashLite.UI
             var next_form = new Home();
             next_form.Closed += (s, args) => this.Close();
             next_form.Show();
+            Run.RegisterLog(0, 16, "Home window opened from Welcome window.");
         }
     }
 }

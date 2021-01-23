@@ -144,9 +144,11 @@ namespace PasswordsStashLite.Logic
         {
             string query_1 = "DELETE FROM PASSWORD;";
             string query_2 = "DELETE FROM MASTERPASSWORD";
+            string query_3 = "DELETE FROM Log";
 
             Memory.sqlite.Query(query_1);
             Memory.sqlite.Query(query_2);
+            Memory.sqlite.Query(query_3);
         }
 
         public void WIPE_PASSWORDS_TABLE()
@@ -173,6 +175,14 @@ namespace PasswordsStashLite.Logic
                 "( \"id\" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE" +
                 ", \"sha512_master_password\" TEXT" +
                 ", \"password_hint\" TEXT)";
+            string query_3 = @"CREATE TABLE `Log`(
+                `LogId` INTEGER NOT NULL UNIQUE,
+                `Title` TEXT,
+	            `Type`  TEXT,
+	            `Description`   TEXT,
+	            `Date`  TEXT,
+	            PRIMARY KEY(`LogId` AUTOINCREMENT)
+                );";
             string custom_console_message = "Database created. Table PASSWORD: OK.";
             string custom_console_message_2 = "Table MASTERPASSWORD. OK.";
             Memory.sqlite.Query(query, custom_console_message);

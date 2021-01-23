@@ -6,9 +6,6 @@
         public string legible_master_password { get; set; } = "";
         public string password_hint { get; set; } = "";
 
-        public MasterPassword()
-        {
-
-        }
+        public MasterPassword() { }
     }
 }

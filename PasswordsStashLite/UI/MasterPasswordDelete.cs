@@ -31,13 +31,14 @@ namespace PasswordsStashLite.UI
                 Run.PASSWORDS_ON_DATABASE_GET_DECRYPTED();
                 delete_master_password_on_memory();
                 delete_master_password_on_database();
+                Run.RegisterLog(2, 9, "User has deleted the Master Password");
                 ui_setting_after_deleting_master_password();
                 OPEN_SETTINGS_AND_MORE_WINDOW();
             }
             else
-            { 
+            {
                 Run.MESSAGEBOX("Wrong Master Password password.",
-                    "Wrong password",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    "Wrong password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -70,6 +71,7 @@ namespace PasswordsStashLite.UI
         {
             if (!string.IsNullOrWhiteSpace(Memory.master_password.password_hint))
             {
+                Run.RegisterLog(2, 15, "User has asked for the Master Password hint.");
                 Run.MESSAGEBOX("Passwords hint:\r\n" +
                     Memory.master_password.password_hint, "Password hint", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

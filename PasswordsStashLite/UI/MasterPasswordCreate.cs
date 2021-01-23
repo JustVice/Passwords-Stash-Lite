@@ -58,6 +58,7 @@ namespace PasswordsStashLite.UI
             Run.SAVE_MASTER_PASSWORD_SETTINGS_INSIDE_MEMORY(new_mp);
             Run.SAVE_MASTER_PASSWORD_SETTINGS_INSIDE_DATABASE(new_mp);
             Memory.is_master_password_activated = true;
+            Run.RegisterLog(2, 8, "User has registered a new Master Password");
         }
 
         private bool IS_THERE_A_MASTER_PASSWORD_HINT_TYPED()

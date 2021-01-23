@@ -1,5 +1,7 @@
 ﻿using PasswordsStashLite.Object;
 using PasswordsStashLite.UI;
+using PasswordsStashLite.v2._1_.Controller;
+using PasswordsStashLite.v2._1_.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +18,6 @@ namespace PasswordsStashLite.Logic
                 LOAD_DATA_FROM_INIFILE();
                 LOAD_DATA_FROM_DATABASE();
                 AFTER_LOAD_METHOD_TREE();
-                //OPEN_TEST_ROOM();
             }
             catch (Exception e)
             {
@@ -39,11 +40,12 @@ namespace PasswordsStashLite.Logic
 
         private void NORMAL_RUN_TREE()
         {
-            if (FIRST_TIME_THE_PROGRAM_OPENS())
+            if (FIRST_TIME_THE_PROGRAM_OPENS() && !Memory.is_master_password_activated)
             {
                 Console.WriteLine("First time opening program.");
                 string first_time_the_program_opens_string_option = Memory.initial_panel.welcome.ToString();
                 OPEN_SELECTOR(first_time_the_program_opens_string_option);
+                RegisterLog(0, 1, "User has opened the app for the first time.");
             }
             else
             {
@@ -60,6 +62,7 @@ namespace PasswordsStashLite.Logic
         {
             if (Memory.is_master_password_activated)
             {
+                RegisterLog(0, 1, "User has opened the application and Master Password form was shown.");
                 string console_message =
                     "Master password activated. Opening Master Password Wall.";
                 Console.WriteLine(console_message);
@@ -68,6 +71,7 @@ namespace PasswordsStashLite.Logic
             }
             else
             {
+                RegisterLog(0, 1, "User has opened the application and home window was shown.");
                 DECODE_ALL_PASSWORDS_ON_MEMORY();
                 string console_message =
                     "Master password disabled. Opening home.";
@@ -370,6 +374,24 @@ namespace PasswordsStashLite.Logic
             {
                 Console.WriteLine("OPEN BROWSER WITH URL ERROR.\r\n" + ex);
             }
+        }
+
+        /// <summary>
+        /// Inserts a new log into the database.
+        /// </summary>
+        /// <param name="title">Title index from LogModel.LogTitles[]</param>
+        /// <param name="type">Type index from LogModel.LogTypes[]</param>
+        /// <param name="description">Description of the log.</param>
+        public static async void RegisterLog(int title
+            , int type
+            , string description)
+        {
+            string title_str = LogModel.LogTitles[title];
+            string type_str = LogModel.LogTypes[type];
+
+            LogModel logModel = new LogModel(title_str, type_str, description);
+            LogController logController = new LogController(Memory.sqlite_database_path);
+            logController.InsertLog(logModel);
         }
         #endregion
 

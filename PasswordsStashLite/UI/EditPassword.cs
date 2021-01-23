@@ -109,6 +109,7 @@ namespace PasswordsStashLite.UI
 
         private void ui_changes_after_save_changes()
         {
+            Run.RegisterLog(2, 5, "Password " + password_to_edit_classGlobalVariable.getService() + " edited");
             Run.MESSAGEBOX("Password successfully edited.", "Success", MessageBoxButtons.OK,MessageBoxIcon.Information);
             this.Hide();
             var next_form = new SeePasswords();

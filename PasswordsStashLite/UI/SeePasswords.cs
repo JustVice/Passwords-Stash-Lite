@@ -60,6 +60,7 @@ namespace PasswordsStashLite.UI
             if (temp_password != null)
             {
                 COPY_TO_CLIPBOARD_METHOD_TREE(temp_password, "password");
+                Run.RegisterLog(2, 6, "User has copied a passwords password.");
             }
         }
         private void button_copy_user_Click(object sender, EventArgs e)
@@ -68,6 +69,7 @@ namespace PasswordsStashLite.UI
             if (temp_password != null)
             {
                 COPY_TO_CLIPBOARD_METHOD_TREE(temp_password, "user");
+                Run.RegisterLog(2, 6, "User has copied a passwords username info.");
             }
         }
         private void button_copy_email_Click(object sender, EventArgs e)
@@ -76,6 +78,7 @@ namespace PasswordsStashLite.UI
             if (temp_password != null)
             {
                 COPY_TO_CLIPBOARD_METHOD_TREE(temp_password, "email");
+                Run.RegisterLog(2, 6, "User has copied a passwords email.");
             }
         }
         private void button_notes_Click(object sender, EventArgs e)
@@ -84,6 +87,7 @@ namespace PasswordsStashLite.UI
             if (temp_password != null)
             {
                 COPY_TO_CLIPBOARD_METHOD_TREE(temp_password, "notes");
+                Run.RegisterLog(2, 6, "User has copied a passwords notes.");
             }
         }
         private void COPY_TO_CLIPBOARD_METHOD_TREE(Password temp_password, string element_to_copy)
@@ -144,12 +148,14 @@ namespace PasswordsStashLite.UI
             Password selected_password_to_delete = this.listBox_passwords.SelectedItem as Password;
             if (selected_password_to_delete != null)
             {
+                Run.RegisterLog(2, 16, "User pressed Delete Password button.");
                 bool user_sure_about_deleting_password = is_the_user_sure_about_deleting_password(selected_password_to_delete);
                 if (user_sure_about_deleting_password)
                 {
                     delete_password_from_database(selected_password_to_delete);
                     delete_password_from_memory(selected_password_to_delete);
                     after_delete_ui_changes();
+                    Run.RegisterLog(2, 4, "User has deleted a password.");
                 }
                 else
                 {
@@ -220,8 +226,6 @@ namespace PasswordsStashLite.UI
             if (selected_password_to_edit != null)
             {
                 Console.WriteLine("Editing: " + selected_password_to_edit.ToString());
-                //Console.WriteLine("Database id: " + selected_password_to_edit.getDatabaseID());
-                //Console.WriteLine("Object id: " + selected_password_to_edit.passwordsStashLiteObject_id);
                 edit_password_tree(selected_password_to_edit);
             }
         }
@@ -231,6 +235,7 @@ namespace PasswordsStashLite.UI
             var next_form = new EditPassword(selected_password_to_edit);
             next_form.Closed += (s, args) => this.Close();
             next_form.Show();
+            Run.RegisterLog(2, 16, "User has entered Password Edit menu.");
         }
         #endregion
 
@@ -249,6 +254,7 @@ namespace PasswordsStashLite.UI
             {
                 COPY_ELEMENT_TO_CLIPBOARD(temp_password.getPassword_content());
                 CHANGE_COPY_BUTTONS_TEXT("Copied!", "User", "Email", "Notes");
+                Run.RegisterLog(2, 6, "User has copied a passwords password.");
             }
         }
 
@@ -256,17 +262,25 @@ namespace PasswordsStashLite.UI
         {
             CHANGE_COPY_BUTTONS_TEXT("Password", "User", "Email", "Notes");
             Password temp_password = return_selected_password_on_list();
-            ENABLE_OR_DISABLE_COPY_BUTTONS_DEPENDING_ON_PASSWORD_CONTENT(temp_password);
+            if (temp_password != null)
+                ENABLE_OR_DISABLE_COPY_BUTTONS_DEPENDING_ON_PASSWORD_CONTENT(temp_password);
         }
 
         private void ENABLE_OR_DISABLE_COPY_BUTTONS_DEPENDING_ON_PASSWORD_CONTENT(Password temp_password)
         {
-            string email = temp_password.getEmail();
-            string user = temp_password.getUser();
-            string notes = temp_password.getNotes();
-            button_copy_email.Enabled = !string.IsNullOrEmpty(email);
-            button_copy_user.Enabled = !string.IsNullOrEmpty(user);
-            button_copy_notes.Enabled = !string.IsNullOrEmpty(notes);
+            try
+            {
+                string email = temp_password.getEmail();
+                string user = temp_password.getUser();
+                string notes = temp_password.getNotes();
+                button_copy_email.Enabled = !string.IsNullOrEmpty(email);
+                button_copy_user.Enabled = !string.IsNullOrEmpty(user);
+                button_copy_notes.Enabled = !string.IsNullOrEmpty(notes);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("No password selected.");
+            }
         }
     }
 }

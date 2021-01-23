@@ -10,7 +10,7 @@ namespace PasswordsStashLite.UI
         {
             InitializeComponent();
             SETTINGS();
-            this.Text = Memory.version;
+            this.Text = "Passwords Stash Lite " + Memory.version;
         }
 
         #region SETTINGS
@@ -28,6 +28,7 @@ namespace PasswordsStashLite.UI
         {
             if (Memory.is_master_password_activated)
             {
+                Run.RegisterLog(2, 17, "User has entered the DELETE Master Password window.");
                 this.Hide();
                 Memory.master_password_form = new MasterPassword(1, 1);
                 Memory.master_password_form.Closed += (s, args) => this.Close();
@@ -35,6 +36,7 @@ namespace PasswordsStashLite.UI
             }
             else
             {
+                Run.RegisterLog(2, 17, "User has entered the CREATE Master Password window.");
                 this.Hide();
                 Memory.master_password_form = new MasterPassword(0, 1);
                 Memory.master_password_form.Closed += (s, args) => this.Close();
@@ -45,6 +47,7 @@ namespace PasswordsStashLite.UI
         
         private void button_about_Click(object sender, System.EventArgs e)
         {
+            Run.RegisterLog(0, 11, "User has entered About window. Thats me!");
             this.Hide();
             var next_form = new About();
             next_form.Closed += (s, args) => this.Close();
@@ -55,6 +58,7 @@ namespace PasswordsStashLite.UI
         #region DELETE ALL DATA
         private void button_delete_all_data_Click(object sender, System.EventArgs e)
         {
+            Run.RegisterLog(2, 16, "User has pressed Delete all data button!");
             Run r = new Run();
             r.DELETE_ALL_DATA_METHOD_TREE();
         }
@@ -72,7 +76,17 @@ namespace PasswordsStashLite.UI
         {
             Console.WriteLine("Opening Easter Egg 2...");
             string url = "https://dl.dropboxusercontent.com/s/905d2fgfbn3cady/room-pslite.png?dl=0";
+            Run.RegisterLog(0, 10, "That's my room when I made this program.");
             Run.OPEN_LINK_ON_BROWSER(url);
+        }
+
+        private void button_logs_Click(object sender, EventArgs e)
+        {
+            Run.RegisterLog(0, 16, "User has entered Logs Window.");
+            this.Hide();
+            var next_form = new Log();
+            next_form.Closed += (s, args) => this.Close();
+            next_form.Show();
         }
     }
 }

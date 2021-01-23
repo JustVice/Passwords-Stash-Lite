@@ -1,0 +1,2 @@
+- The home menu can be expanded making it reveal a good old OC placing an easter egg.
+- Settings menu can be expanded revealing a "???" label that can be pressed and will open a secret image.

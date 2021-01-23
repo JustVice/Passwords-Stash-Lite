@@ -7,7 +7,7 @@ namespace PasswordsStashLite.Logic
     {
         //Paths
         public static string sqlite_database_name = "psldata.db";
-        public static string sqlite_database_path = 
+        public static string sqlite_database_path =
             Run.GET_PROGRAM_PATH() + "\\" + sqlite_database_name;
         public static string inifile_datafile_name = "userdata.ini";
         public static string inifile_datafile_path =
@@ -15,9 +15,8 @@ namespace PasswordsStashLite.Logic
 
         //Titles
         public static string program_name = "Passwords Stash Lite";
-        public static string version = "2.0.3";
+        public static string version = "2.1.0";
         public static string program_title_bar = program_name + " " + version;
-        
 
         //Booleans
         public static bool is_master_password_activated = false;
@@ -28,7 +27,7 @@ namespace PasswordsStashLite.Logic
         public static bool hide_about = false;
 
         //Objects
-        public static SQLiteController  sqlite = new SQLiteController();
+        public static SQLiteController sqlite = new SQLiteController();
         public static List<Password> passwords_list = new List<Password>();
         public static MasterPassword master_password = new MasterPassword();
         public static INIFileController inifile = new INIFileController();
@@ -50,6 +49,5 @@ namespace PasswordsStashLite.Logic
 
         //Program initialization string
         public static string initiate_program_at = initial_panel.Home.ToString();
-
     }
 }

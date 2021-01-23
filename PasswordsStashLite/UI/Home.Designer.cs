@@ -114,6 +114,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.Text = "P.S Lite";
+            this.ResizeEnd += new System.EventHandler(this.Home_ResizeEnd);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

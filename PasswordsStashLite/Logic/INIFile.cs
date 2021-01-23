@@ -7,23 +7,16 @@ namespace PasswordsStashLite.Logic
     {
         public void Write(string section, string key, string value)
         {
-            WritePrivateProfileString(section, key, value.ToLower(), this.filePath);
+            WritePrivateProfileString(section, key, value.ToLower(), this.FilePath);
         }
 
         public string Read(string section, string key)
         {
             StringBuilder SB = new StringBuilder(255);
-            int i = GetPrivateProfileString(section, key, "", SB, 255, this.filePath);
             return SB.ToString();
         }
 
-        public string FilePath
-        {
-            get { return this.filePath; }
-            set { this.filePath = value; }
-        }
-
-        private string filePath;
+        public string FilePath { get; set; }
 
         [DllImport("kernel32")]
         private static extern long WritePrivateProfileString(string section,
@@ -41,7 +34,7 @@ namespace PasswordsStashLite.Logic
 
         public INIFile(string filePath)
         {
-            this.filePath = filePath;
+            this.FilePath = filePath;
         }
     }
 }

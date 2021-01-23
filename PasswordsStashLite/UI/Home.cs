@@ -38,6 +38,7 @@ namespace PasswordsStashLite.UI
 
         private void button_create_new_password_Click(object sender, EventArgs e)
         {
+            Run.RegisterLog(0, 16, "Create new password window opened.");
             this.Hide();
             var next_form = new CreatePassword();
             next_form.Closed += (s, args) => this.Close();
@@ -46,6 +47,7 @@ namespace PasswordsStashLite.UI
 
         private void button_see_password_Click(object sender, EventArgs e)
         {
+            Run.RegisterLog(2, 3, "User entered See Passwords window from home window.");
             this.Hide();
             var next_form = new SeePasswords();
             next_form.Closed += (s, args) => this.Close();
@@ -54,10 +56,16 @@ namespace PasswordsStashLite.UI
 
         private void button_more_Click(object sender, EventArgs e)
         {
+            Run.RegisterLog(0, 7, "User entered Settings window from home Window.");
             this.Hide();
             var next_form = new MoreAndSettings();
             next_form.Closed += (s, args) => this.Close();
             next_form.Show();
+        }
+
+        private void Home_ResizeEnd(object sender, EventArgs e)
+        {
+            Run.RegisterLog(0, 10, "Hey! how did that get there?");
         }
     }
 }

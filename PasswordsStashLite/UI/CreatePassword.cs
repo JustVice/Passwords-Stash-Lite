@@ -99,6 +99,7 @@ namespace PasswordsStashLite.UI
                 Password new_pass = BUILD_PASSWORD_OBJECT();
                 SAVE_PASSWORD_TREE(new_pass);
                 UI_CHANGES_AFTER_SAVING_PASSWORD(new_pass);
+                Run.RegisterLog(3, 2, "User has created a new password: " + new_pass.getService() + ".");
             }
         }
 
