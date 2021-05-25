@@ -45,7 +45,7 @@
             // 
             // button_back_to_settings
             // 
-            this.button_back_to_settings.Location = new System.Drawing.Point(6, 435);
+            this.button_back_to_settings.Location = new System.Drawing.Point(5, 451);
             this.button_back_to_settings.Name = "button_back_to_settings";
             this.button_back_to_settings.Size = new System.Drawing.Size(45, 23);
             this.button_back_to_settings.TabIndex = 1;
@@ -80,7 +80,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(56, 113);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(142, 146);
+            this.pictureBox1.Size = new System.Drawing.Size(145, 148);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -99,7 +99,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 248);
+            this.label4.Location = new System.Drawing.Point(8, 264);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(457, 13);
             this.label4.TabIndex = 8;
@@ -110,7 +110,7 @@
             this.label_pslite_web_page.AutoSize = true;
             this.label_pslite_web_page.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F);
             this.label_pslite_web_page.ForeColor = System.Drawing.Color.Blue;
-            this.label_pslite_web_page.Location = new System.Drawing.Point(25, 288);
+            this.label_pslite_web_page.Location = new System.Drawing.Point(24, 304);
             this.label_pslite_web_page.Name = "label_pslite_web_page";
             this.label_pslite_web_page.Size = new System.Drawing.Size(204, 29);
             this.label_pslite_web_page.TabIndex = 9;
@@ -120,7 +120,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(54, 265);
+            this.label6.Location = new System.Drawing.Point(53, 281);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(147, 13);
             this.label6.TabIndex = 10;
@@ -131,11 +131,11 @@
             this.label_vice_links.AutoSize = true;
             this.label_vice_links.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F);
             this.label_vice_links.ForeColor = System.Drawing.Color.Blue;
-            this.label_vice_links.Location = new System.Drawing.Point(50, 379);
+            this.label_vice_links.Location = new System.Drawing.Point(49, 395);
             this.label_vice_links.Name = "label_vice_links";
-            this.label_vice_links.Size = new System.Drawing.Size(148, 29);
+            this.label_vice_links.Size = new System.Drawing.Size(182, 29);
             this.label_vice_links.TabIndex = 11;
-            this.label_vice_links.Text = "VICE\'s links";
+            this.label_vice_links.Text = "VICE\'s website";
             this.label_vice_links.Click += new System.EventHandler(this.label_vice_links_Click);
             // 
             // label_pslite_github
@@ -143,7 +143,7 @@
             this.label_pslite_github.AutoSize = true;
             this.label_pslite_github.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F);
             this.label_pslite_github.ForeColor = System.Drawing.Color.Blue;
-            this.label_pslite_github.Location = new System.Drawing.Point(16, 328);
+            this.label_pslite_github.Location = new System.Drawing.Point(15, 344);
             this.label_pslite_github.Name = "label_pslite_github";
             this.label_pslite_github.Size = new System.Drawing.Size(232, 29);
             this.label_pslite_github.TabIndex = 12;
@@ -153,17 +153,17 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(87, 446);
+            this.label10.Location = new System.Drawing.Point(86, 462);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(174, 13);
+            this.label10.Size = new System.Drawing.Size(177, 13);
             this.label10.TabIndex = 14;
-            this.label10.Text = "©2020 - JUST VICE - License: MIT";
+            this.label10.Text = "©2020 - SPLIT VICE - License: MIT";
             // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 461);
+            this.ClientSize = new System.Drawing.Size(259, 480);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label_pslite_github);
             this.Controls.Add(this.label_vice_links);

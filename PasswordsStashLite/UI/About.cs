@@ -31,17 +31,17 @@ namespace PasswordsStashLite.UI
 
         private void label_pslite_web_page_Click(object sender, EventArgs e)
         {
-            Run.OPEN_LINK_ON_BROWSER("https://justvice.github.io/technology/CSharp/passwords-stash-lite/");
+            Run.OPEN_LINK_ON_BROWSER("http://split-vice/technology/CSharp/passwords-stash-lite/");
         }
 
         private void label_pslite_github_Click(object sender, EventArgs e)
         {
-            Run.OPEN_LINK_ON_BROWSER("https://github.com/JustVice/Passwords-Stash-Lite");
+            Run.OPEN_LINK_ON_BROWSER("https://github.com/SplitVice/Passwords-Stash-Lite");
         }
 
         private void label_vice_links_Click(object sender, EventArgs e)
         {
-            Run.OPEN_LINK_ON_BROWSER("https://justvice.github.io/links/");
+            Run.OPEN_LINK_ON_BROWSER("http://split-vice.com");
         }
     }
 }

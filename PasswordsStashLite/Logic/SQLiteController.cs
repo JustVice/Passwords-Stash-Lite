@@ -131,7 +131,7 @@ namespace PasswordsStashLite.Logic
                     "It seems another program has the database file open.\r\n" +
                     "Please, close this program before continue.\r\n" +
                     "If the problem persist, report this as a bug at official support.\r\n\r\n" +
-                    "PasswordsStashLite official web page - JUST VICE.\r\n\r\n" +
+                    "PasswordsStashLite official web page - SPLIT VICE.\r\n\r\n" +
                     "The program will close now.\r\n\r\n" +
                     "Error description:\r\n" + ex;
                 Run.MESSAGEBOX(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
